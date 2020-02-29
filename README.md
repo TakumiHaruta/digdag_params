@@ -1,0 +1,1 @@
+Instant digdag environment on Docker

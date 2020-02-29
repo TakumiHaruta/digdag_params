@@ -1,0 +1,38 @@
+version: '2'
+services:
+  digdag:
+    build:
+      context: ./digdag
+      dockerfile: Dockerfile
+    ports:
+      - "65432:65432"
+      - "65433:65433"
+    volumes:
+      - ./digdag:/etc/digdag
+    command: 
+     - digdag
+     - server
+     - --task-log
+     - /etc/digdag/sessions
+     - --config
+     - /etc/digdag/server.properties
+     - --params-file
+     - /etc/digdag/params.yml
+    depends_on:
+      - postgresql
+  postgresql:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+     - ./postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    command: 
+     - postgres
+     - -c
+     - superuser_reserved_connections=30
+     - -c
+     - max_connections=1000
