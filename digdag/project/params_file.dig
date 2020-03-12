@@ -1,0 +1,15 @@
++parent:
+  +child1:
+    py>: print_var.print_vars
+  +child2:
+    _export:
+      var2: Updated Orange by export
+    py>: print_var.print_vars
+    var1: Updated Apple by local
+  +child3:
+    py>: print_var.print_and_store_vars
+  +child4:
+    _export:
+      var1: Updated Apple by export
+    py>: print_var.print_vars
+    var1: Updated Apple by local

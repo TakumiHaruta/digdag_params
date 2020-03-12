@@ -1,0 +1,13 @@
++parent:
+  +child1:
+    py>: print_var.print_and_store_vars
+  +set_values:
+    param_set>:
+    var1: Updated Apple by param_set
+  +child2:
+    py>: print_var.print_vars
+  +get_values:
+    param_get>:
+    var1: var1
+  +child3:
+    py>: print_var.print_vars

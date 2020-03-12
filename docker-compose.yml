@@ -1,16 +1,15 @@
-version: '2'
+version: '3'
 services:
   digdag:
     build:
       context: ./digdag
       dockerfile: Dockerfile
+    volumes:
+      - ./digdag/output:/output
     ports:
       - "65432:65432"
-      - "65433:65433"
-    volumes:
-      - ./digdag:/etc/digdag
     command: 
-     - digdag
+     - /usr/local/bin/digdag
      - server
      - --task-log
      - /etc/digdag/sessions
@@ -22,10 +21,6 @@ services:
       - postgresql
   postgresql:
     image: postgres:9.6
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
     volumes:
      - ./postgres/data:/var/lib/postgresql/data
     ports:
