@@ -21,6 +21,8 @@ services:
       - postgresql
   postgresql:
     image: postgres:9.6
+    env_file:
+      - ./.env
     volumes:
      - ./postgres/data:/var/lib/postgresql/data
     ports:
