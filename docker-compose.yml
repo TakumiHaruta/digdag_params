@@ -5,7 +5,7 @@ services:
       context: ./digdag
       dockerfile: Dockerfile
     volumes:
-      - ./digdag/output:/output
+      - ./digdag:/opt/etc/digdag
     ports:
       - "65432:65432"
     command: 

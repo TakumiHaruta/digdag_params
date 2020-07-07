@@ -10,9 +10,9 @@ cat /etc/digdag/server.fmt > /etc/digdag/server.properties
 echo "$POSTGRES_HOST:$POSTGRES_PORT:$POSTGRES_DB:$POSTGRES_USER:$POSTGRES_PASSWORD" > ~/.pgpass
 chmod 600 ~/.pgpass
 
-cp /etc/digdag/server.properties /output/
-cp /etc/digdag/env /output/
-cp ~/.pgpass /output/
+cp /etc/digdag/server.properties /opt/etc/digdag/output/
+cp /etc/digdag/env /opt/etc/digdag/output/
+cp ~/.pgpass /opt/etc/digdag/output/
 
 # wait for postgresup
 until psql -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -p "$POSTGRES_PORT" -c '\l'; do
